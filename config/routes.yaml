@@ -1,3 +1,4 @@
 #index:
 #    path: /
+#    path: /admin
 #    controller: App\Controller\DefaultController::index

@@ -31,7 +31,19 @@ class Post
      */
     private $content;
 
+    /**
+     * @var \DateTimeInterface|null
+     * @ORM\Column(type="datetime", nullable=true)
+     */
     private $date;
+
+    /**
+     * Post constructor.
+     */
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -69,5 +81,11 @@ class Post
         return $this;
     }
 
-
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 }
