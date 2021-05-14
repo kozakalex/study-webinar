@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
+use App\Form\FormType;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,9 +18,11 @@ class MainController extends AbstractController
     {
         $posts = $postRepository->findAll();
 
-        return $this->render('main/index.html.twig', [
+        return $this->render('main/index.html.twig',[
             'controller_name' => 'MainController',
-            'posts'           => $posts
+            'posts'           => $posts,
+
         ]);
+
     }
 }
