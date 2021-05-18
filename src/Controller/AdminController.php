@@ -19,19 +19,6 @@ class AdminController extends AbstractController
      */
     public function index(PostRepository $postRepository): Response
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $post = $postRepository->find(13);
-//        $post->setTitle('Edited 2222');
-
-//        $post = new Post();
-//        $post->setTitle('Hello!');
-//        $post->setContent('Lorem ipsum');
-//        $em->persist($post);
-
-//        $em->remove($post);
-
-//        $em->flush();
-
 
         $form = $this->createForm(FormType::class);
         $posts = $postRepository->findAll();
@@ -91,26 +78,26 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/edit/{id}", name="admin_edit")
+     * @Route("/admin/edit/{id}", name="admin_edit", methods={"GET","POST"})
      */
-    public function edit(Post $post): Response
+    public function edit(Request $request, Post $post): Response
     {
 
         $form = $this->createForm(FormType::class, $post);
-        $form->handleRequest($post);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid() ) {
+            $this->getDoctrine()->getManager()->flush();
 
-        if ($form->isValid() && $form->isSubmitted()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($post);
-            $em->flush();
-
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('admin', [
+                'id'=>$post->getId(), ]);
         }
 
         return $this->render('admin/edit.html.twig', [
-            'form' => $form->createView()
+            'post'=>$post,
+            'form' => $form->createView(),
         ]);
+
 
 
     }

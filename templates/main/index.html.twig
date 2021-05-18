@@ -9,7 +9,8 @@
 </style>
 
 <div class="example-wrapper">
-    <a href="{{ path('admin') }}"> Go to Admin page </a>
+    <a href="{{ path('admin') }}"> Go to Admin page </a><br>
+    <a href="{{ path('task') }}"> Task </a>
     {% for post in posts %}
         <h3> {{ post.id}} - title: {{ post.title}} - content: {{ post.content}} - {{ post.date | date('m/d/Y') }} </h3>
 

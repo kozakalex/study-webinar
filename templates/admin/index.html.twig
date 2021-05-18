@@ -10,9 +10,9 @@
 
 <div class="example-wrapper">
     <h1>Admin</h1>
-    <a href="{{ path('admin_create') }}">Add Post</a>
+    <a href="{{ path('admin_create') }}" >Add Post</a>
     {% for post in posts %}
-        <h3> {{ post.id}} - title: {{ post.title}} - content: {{ post.content}} - {{ post.date | date('m/d/Y') }} </h3>
+        <h3> {{ post.id}} - title: {{ post.title}} - content: {{ post.content}} - {{ post.date | date('d/m/Y') }} </h3>
         <a href="{{ path('admin_edit', {'id' : post.id}) }}">Edit</a>
         <a href="{{ path('admin_remove', {'id':post.id}) }}">Delete</a>
     {% endfor %}
