@@ -10,15 +10,24 @@
 
 <div class="example-wrapper">
     <a href="{{ path('admin') }}"> Go to Admin page </a><br>
-    <a href="{{ path('task') }}"> Task </a>
+    <a href="{{ path('task_list') }}"> Tasks </a>
+    <hr>
+    <div>
+        {{ form_start(filterForm) }}
+        {{ form_widget(filterForm.sortby) }}
+        {{ form_widget(filterForm.orderby) }}
+            <button type="submit">Apply</button>
+        {{ form_end(filterForm) }}
+    </div>
+    <hr>
+
     {% for post in posts %}
-        <h3> {{ post.id}} - title: {{ post.title}} - content: {{ post.content}} - {{ post.date | date('m/d/Y') }} </h3>
-
-
-{#        <h3>{{ post.id }}</h3>#}
-{#        <h2>{{ post.title }}</h2>#}
-{#        <h3>{{ post.content }}</h3>#}
-{#        <h3>{{ post.date }}</h3>#}
+        <h3> {{ post.id}} - title: {{ post.title}} - content: {{ post.content}} - {{ post.date | date('d/m/Y') }} </h3>
     {% endfor %}
+
 </div>
+    <div class="navigation text-center">
+        {{ knp_pagination_render(posts) }}
+    </div>
+
 {% endblock %}

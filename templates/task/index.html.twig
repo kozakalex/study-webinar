@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1> TODO list:</h1>
+        <a href="{{ path('task_create') }}">Add New Task</a><br>
+        <a href="{{ path('task_clear') }}">Clear</a>
+        {% for task in tasks %}
+            <h3>
+                {% if (task.status == 0) %}
+                    <s>{{ task.id }} - task: {{ task.content }}</s>
+                {% else %}
+                    {{ task.id }} - task: {{ task.content }}
+
+                {% endif %}
+            </h3>
+            <a href="{{ path('task_edit', {'id' : task.id}) }}">Edit</a>
+            <a href="{{ path('task_remove', {'id':task.id}) }}">Delete</a>
+            <a href="{{ path('task_done', {'id':task.id}) }}">Done</a>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Измените данные:</h1>
+    {{ form(form) }}
+
+{#    <a href="{{ path('admin_create') }}">Add Post</a>#}
+{#    {% for post in posts %}#}
+{#        <h3> {{ post.id}} - title: {{ post.title}} - content: {{ post.content}} - {{ post.date | date('m/d/Y') }} </h3>#}
+{#        <a href="{{ path('admin_edit', {'id' : post.id}) }}">Edit</a>#}
+{#        <a href="{{ path('admin_remove', {'id':post.id}) }}">Delete</a>#}
+{#    {% endfor %}#}
+
+
+</div>
+{% endblock %}
